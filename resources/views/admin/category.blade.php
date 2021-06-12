@@ -11,7 +11,7 @@
     </div>
 @endif
 <div class="row justify-content-end m-2">
-    <button class="btn btn-primary px-4" data-toggle="modal" data-target="#addcategory">Add</button>
+    <button class="btn btn-success px-4" data-toggle="modal" data-target="#addcategory">Add</button>
 </div>
 
 <div class="modal fade" id="addcategory" tabindex="-1" role="dialog" aria-hidden="true">
@@ -30,13 +30,13 @@
                 <div class="form-group row">
                   <label for="name" class="col-sm-2 col-form-label">Name:</label>
                   <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="category name...">
+                    <input required type="text" name="name" class="form-control" id="name" placeholder="category name...">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="slug" class="col-sm-2 col-form-label">Slug:</label>
                   <div class="col-sm-10">
-                    <input type="text" name="slug" class="form-control" id="slug" placeholder="category slug...">
+                    <input required type="text" name="slug" class="form-control" id="slug" placeholder="category slug...">
                   </div>
                 </div>
               </form>
@@ -61,9 +61,10 @@
       </tr>
     </thead>
     <tbody>
+        <?php $i = 1; ?>
         @foreach ($categories as $c )
         <tr>
-            <th scope="row">{{ $c['id'] }}</th>
+            <th scope="row">{{ $i++ }}</th>
             <td>{{ $c['name'] }}</td>
             <td>{{ $c['slug'] }}</td>
             <td>{{ !$c['created_at']  ? 'NULL' : $c['created_at']}}</td>

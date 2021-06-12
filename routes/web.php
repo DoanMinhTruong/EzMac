@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[App\Http\Controllers\HomeController::class, 'new_daily'])->name('new_daily');
+Route::get('/macbook/{slug}',[App\Http\Controllers\User\ProductController::class, 'index'])->name('user_product');
+
 Route::get('/login' , function(){
     return view('layouts.app');
 });
@@ -40,5 +40,12 @@ Route::group(['prefix' => 'admin' , 'as' =>'admin.' , 'middleware' =>'accessadmi
     
     
     Route::get('product' , [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('product');
+    Route::get('product/category/{slug}' , [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('product_slug');
+
+    Route::post('product' , [App\Http\Controllers\Admin\ProductController::class, 'store'])
+        ->name('add_product')->middleware('missingproductadd');
+    Route::delete('product/{id}' , [App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('delete_product');
+    Route::get('product/{slug}' , [App\Http\Controllers\Admin\ProductController::class, 'show'])->name('product_detail');
+    Route::put('product/{id}' , [App\Http\Controllers\Admin\ProductController::class, 'update'])->name('update_product');
 
 });

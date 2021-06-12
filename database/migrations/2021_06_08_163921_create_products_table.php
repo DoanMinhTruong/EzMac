@@ -15,13 +15,13 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id')->startingValue(0);
-            $table->string('name');
+            $table->string('name')->unique();
             $table->unsignedInteger('parent_id')->index();
             
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->float('price' , 8 ,2);
-            $table->string('image');
-            $table->string('description');
+            $table->string('image')->unique();
+            $table->string('description')->default('');
             $table->timestamps();
 
             $table->foreign('parent_id')

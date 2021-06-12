@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'accessadmin' => \App\Http\Middleware\AccessAdmin::class,
         'missingcategoryadd'=> \App\Http\Middleware\MissingCategoryAdd::class,
+        'missingproductadd'=> \App\Http\Middleware\MissingProductAdd::class,
     ];
 }

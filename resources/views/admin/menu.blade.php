@@ -1,6 +1,6 @@
 @extends("layouts.app")
 @section("content")
-    <div class="container" style="height:800px ;">
+    <div class="container-fluid col-9" style="height:800px ;">
         <div class="row h-100">
             <div class="col-2 bg-dark" id="admin-menu">
                 <ul class="navbar-nav ">

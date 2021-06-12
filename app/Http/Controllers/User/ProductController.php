@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
-class CategoryController extends Controller
+use App\Models\Product;
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $categories = Category::all();
-        return view('admin.category' , ['categories' =>$categories]);
+    public function index($slug){
+        $p = Product::where('slug' , $slug)->first();
+        return view('user.product' , ['product' => $p]);
     }
 
     /**
@@ -36,11 +35,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $c = new Category();
-        $c->name = $request['name'];
-        $c->slug = $request['slug'];
-        $c->save();
-        return redirect()->back()->with('status_success' , 'Add Successfull');
+        //
     }
 
     /**
@@ -85,8 +80,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $c = Category::where('id' , $id)->first()   ;
-        $c->delete();
-        return redirect()->back();
+        //
     }
 }

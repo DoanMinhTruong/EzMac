@@ -39,6 +39,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a href="" class="nav-link font-weight-bolder mr-5">Product</a>
+                        </li>
+                        
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -65,6 +69,10 @@
                                     <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
                                         Dashboard
                                     </a>
+                                    @else
+                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                        My Cart
+                                    </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -86,6 +94,31 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer>
+            <div class="row bg-dark">
+                <div class=" container my-5 form-inline ">
+                    <div class="col-6">
+                        <div class="top h1 font-weight-bolder text-white">
+                            EzMAC - enjoy the best rates
+                        </div>
+                        <div class="bottom text-white">
+                            Doan Minh Truong © 2021
+                        </div>
+                    </div>
+                    <div class="col-6 form-inline justify-content-end ">
+                        <a href="https://www.facebook.com/ez.dmt/" class="m-3 p-2 rounded bg-secondary">
+                            <img width="25px" style="filter: brightness(0) invert(1);" src="{{ asset('images/facebook.png') }}" alt="">
+                        </a>
+                        <a href="https://github.com/DoanMinhTruong" class="p-2 rounded bg-secondary">
+                            <img width="25px" style="filter: brightness(0) invert(1);" src="{{ asset('images/github.png') }}" alt="">
+                        </a>
+                        <a href="" class="m-3 p-2 rounded bg-secondary">
+                            <img width="25px" style="filter: brightness(0) invert(1);" src="{{ asset('images/linkedin.png') }}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
